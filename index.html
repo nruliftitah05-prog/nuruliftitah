@@ -1,67 +1,147 @@
-# nuruliftitah
-web
+
 <!doctype html>
 <html lang="id">
 <head>
-  <meta charset="utf-8">
-  <title>Profil Mahasiswa</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Biodata — Nama Anda</title>
+  <style>
+    :root{--bg:#f6f8fb;--card:#ffffff;--accent:#4f46e5;--muted:#6b7280}
+    *{box-sizing:border-box}
+    body{font-family:Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;margin:0;background:linear-gradient(180deg,var(--bg),#eef2ff);color:#111}
+    .container{max-width:900px;margin:32px auto;padding:20px}
+    .card{background:var(--card);border-radius:14px;box-shadow:0 6px 20px rgba(20,20,50,0.06);overflow:hidden;display:grid;grid-template-columns:260px 1fr}
+    .sidebar{padding:26px;border-right:1px solid #f1f5f9;background:linear-gradient(180deg,#fff,#fbfdff)}
+    .avatar{width:180px;height:180px;border-radius:14px;object-fit:cover;background:linear-gradient(135deg,var(--accent),#8b5cf6);display:block;margin:0 auto}
+    h1{font-size:20px;margin:14px 0 4px;text-align:center}
+    p.role{margin:0;font-size:13px;color:var(--muted);text-align:center}
+    .contact{margin-top:16px;font-size:14px}
+    .contact div{display:flex;gap:8px;align-items:center;padding:8px 0;border-bottom:1px dashed #f1f5f9}
+    .main{padding:26px}
+    .section{margin-bottom:18px}
+    .section h2{font-size:15px;margin:0 0 10px;color:var(--accent)}
+    .about{line-height:1.6;color:#222}
+    .list{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:10px}
+    .skill{background:#fbfbff;border-radius:8px;padding:10px;border:1px solid #f1f3ff}
+    .btn-row{display:flex;gap:10px;margin-top:12px}
+    button{background:var(--accent);color:#fff;border:0;padding:8px 12px;border-radius:10px;cursor:pointer;font-weight:600}
+    .btn-ghost{background:transparent;color:var(--accent);border:1px solid rgba(79,70,229,0.12)}
+    @media (max-width:720px){.card{grid-template-columns:1fr}.sidebar{border-right:none;border-bottom:1px solid #f1f5f9}}
+  </style>
 </head>
 <body>
-  <h1>Profil Mahasiswa</h1>
-  <h2>Identitas Pribadi</h2>
-  <table border="1" cellpadding="8" cellspacing="0">
-    <tr>
-      <td><strong>Nama</strong></td>
-      <td>{{Nurul Iftitah}}</td>
-    </tr>
-    <tr>
-      <td><strong>NIM</strong></td>
-      <td>{{H021231056}}</td>
-    </tr>
-    <tr>
-      <td><strong>Program Studi</strong></td>
-      <td>{{Fisika S1}}</td>
-    </tr>
-    <tr>
-      <td><strong>Fakultas & Universitas</strong></td>
-      <td>{{Fakultas MIPA, Universitas Hasanuddin}}</td>
-    </tr>
-    <tr>
-      <td><strong>Email</strong></td>
-      <td>{{nruliftittah05@gmail.com}}</td>
-    </tr>
-    <tr>
-      <td><strong>No. HP</strong></td>
-      <td>{{+6285348725950}}</td>
-    </tr>
-    <tr>
-      <td><strong>Alamat</strong></td>
-      <td>{{Makassar, Jalan Perintis Kemerdekaan 7}}</td>
-    </tr>
-  </table>
+  <div class="container">
+    <div class="card" id="biodata-card">
+      <aside class="sidebar">
+        <!-- Ganti src avatar dengan foto Anda, atau gunakan layanan avatar -->
+        <img class="avatar" src="https://via.placeholder.com/360x360.png?text=Foto+Anda" alt="Foto Profil">
+        <h1 id="name">Nama Anda</h1>
+        <p class="role" id="title">Posisi / Pekerjaan</p>
 
-  <h2>Foto Profil</h2>
-  <img src="foto.jpg" alt="Foto Profil" width="200">
+        <div class="contact">
+          <div><strong>Email:</strong>&nbsp;<span id="email">nama@domain.com</span></div>
+          <div><strong>Telepon:</strong>&nbsp;<span id="phone">+62 812 3456 7890</span></div>
+          <div><strong>Tempat:</strong>&nbsp;<span id="location">Kota, Negara</span></div>
+        </div>
 
-  <h2>Tentang Saya</h2>
-  <p>
-    Halo, nama saya {{Nurul Iftitah}}, mahasiswi {{Fisika S1}} di {{Universitas Hasanuddin}}. 
-    Saya memiliki minat dalam bidang teknologi dan senang mempelajari hal-hal baru. 
-    Saat ini saya sedang memprogramkan mata kuliah Pengantar Pemrograman Internet.
-  </p>
+        <div class="btn-row">
+          <button id="downloadVcard">Download vCard</button>
+          <button class="btn-ghost" id="printBtn">Cetak</button>
+        </div>
+      </aside>
 
-  <h2>Hobi</h2>
-  <ul>
-    <li>{{Membuat kerajinan tangan}}</li>
-    <li>{{Membaca}}</li>
-  </ul>
+      <main class="main">
+        <section class="section about">
+          <h2>Tentang Saya</h2>
+          <p id="about">Perkenalkan, saya Nama Anda Nur Fadli Yoga AKA Fadly, Saya Mahasiswa Fisika yang tertarik pada web development dan data science.</p>
+        </section>
 
-  <h2>Keterampilan</h2>
-  <ol>
-    <li>{{Keterampilan 1}}</li>
-    <li>{{Keterampilan 2}}</li>
-    <li>{{Keterampilan 3}}</li>
-  </ol>
+        <section class="section">
+          <h2>Pendidikan</h2>
+          <div class="list" id="education">
+            <div>
+              <strong>S1 — Universitas Hasanuddin</strong>
+              <div style="color:var(--muted);font-size:13px">2019 — 2023 · Jurusan</div>
+            </div>
 
+            <section class="section">
+          <h2>Keahlian</h2>
+          <div class="list" id="skills">
+            <div class="skill">HTML &amp; CSS</div>
+            <div class="skill">JavaScript</div>
+            <div class="skill">Python</div>
+            <div class="skill">Git &amp; GitHub</div>
+          </div>
+        </section>
+
+        <section class="section">
+          <h2>Pengalaman Kerja</h2>
+          <div id="work">
+            <div style="margin-bottom:10px">
+              <strong>Web Developer — Nama Perusahaan</strong>
+              <div style="color:var(--muted);font-size:13px">2023 — Sekarang</div>
+              <div style="margin-top:6px">Bertanggung jawab membuat dan memelihara website, kolaborasi dengan tim desain, serta mengimplementasikan fitur front-end.</div>
+            </div>
+          </div>
+        </section>
+
+        <section class="section">
+          <h2>Kontak &amp; Sosial</h2>
+          <div style="font-size:14px;color:var(--muted)">
+            <div>LinkedIn: <span id="linkedin">linkedin.com/in/username</span></div>
+            <div>GitHub: <span id="github">github.com/username</span></div>
+          </div>
+        </section>
+
+      </main>
+    </div>
+  </div>
+
+  <script>
+    // Script kecil untuk interaksi: ganti nilai demo secara dinamis atau unduh vCard
+    const data = {
+      name: 'Nur Fadli Yoga',
+      title: 'Mahasiswa',
+      email: 'nurfadliyoga23@gmail.com',
+      phone: '+62 821 901 332 67',
+      location: 'Makassar, IDN',
+      about: 'error 666 not found',
+      linkedin: 'https://www.linkedin.com/in/fadly-fadli-yoga-49b346375/',
+      github: 'https://github.com/SYNCHRONICK'
+    };
+
+    // Isi elemen dengan data di atas
+    document.getElementById('name').textContent = data.name;
+    document.getElementById('title').textContent = data.title;
+    document.getElementById('email').textContent = data.email;
+    document.getElementById('phone').textContent = data.phone;
+    document.getElementById('location').textContent = data.location;
+    document.getElementById('about').textContent = data.about;
+    document.getElementById('linkedin').textContent = data['linkedin'];
+    document.getElementById('github').textContent = data['github'];
+
+    // vCard generator
+    document.getElementById('downloadVcard').addEventListener('click', ()=>{
+      const vcard = `BEGIN:VCARD\nVERSION:3.0\nFN:${data.name}\nTITLE:${data.title}\nEMAIL:${data.email}\nTEL:${data.phone}\nADR:;;${data.location};;;;\nURL:https://${data.github}\nEND:VCARD`;
+      const blob = new Blob([vcard], {type:'text/vcard'});
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url; a.download = `${data.name.replace(/\s+/g,'_')}.vcf`; document.body.appendChild(a); a.click(); a.remove(); URL.revokeObjectURL(url);
+    });
+
+    // Print
+    document.getElementById('printBtn').addEventListener('click', ()=> window.print());
+
+    // Optional: allow easy editing via prompt (tidak perlu, tapi berguna untuk demo)
+    // Tekan Ctrl+E untuk mengedit name/title singkat
+    window.addEventListener('keydown', (e)=>{
+      if(e.ctrlKey && e.key.toLowerCase() === 'e'){
+        const newName = prompt('Nama:', data.name);
+        if(newName) { data.name = newName; document.getElementById('name').textContent = data.name; }
+        const newTitle = prompt('Posisi / Pekerjaan:', data.title);
+        if(newTitle) { data.title = newTitle; document.getElementById('title').textContent = data.title; }
+      }
+    });
+  </script>
 </body>
 </html>
